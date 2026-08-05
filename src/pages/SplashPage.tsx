@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Compass } from 'lucide-react';
 
 export const SplashPage: React.FC = () => {
   const navigate = useNavigate();
@@ -17,8 +16,12 @@ export const SplashPage: React.FC = () => {
     <div className="flex flex-col items-center justify-between min-h-screen bg-slate-50 py-20 px-6 text-center animate-fadeIn">
       <div className="my-auto space-y-4">
         {/* Animated App Logo Icon */}
-        <div className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center shadow-xl shadow-purple-500/20 transform hover:scale-105 transition-transform duration-500 animate-bounce">
-          <Compass className="w-14 h-14 text-white stroke-[1.75]" />
+        <div className="w-96 h-96 mx-auto flex items-center justify-center transform hover:scale-105 transition-transform duration-500 animate-bounce overflow-hidden">
+          <img
+            src="/favicon-96x96.png"
+            alt="Đi Đâu app icon"
+            className="object-contain"
+          />
         </div>
 
         {/* App Title */}

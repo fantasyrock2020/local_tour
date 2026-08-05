@@ -21,14 +21,14 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
   const [selectedCategories, setSelectedCategories] = useState<PlaceCategoryEnum[]>([]);
   const [selectedStatuses, setSelectedStatuses] = useState<PlaceStatusFilterEnum[]>([]);
   const [minDistance, setMinDistance] = useState<number>(0);
-  const [maxDistance, setMaxDistance] = useState<number>(50);
+  const [maxDistance, setMaxDistance] = useState<number>(10);
   const [maxPriceLevel, setMaxPriceLevel] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     setSelectedCategories(initialFilter.categories || []);
     setSelectedStatuses(initialFilter.statuses || []);
     setMinDistance(initialFilter.minDistanceKm || 0);
-    setMaxDistance(initialFilter.maxDistanceKm || 50);
+    setMaxDistance(initialFilter.maxDistanceKm || 10);
     setMaxPriceLevel(initialFilter.maxPriceLevel);
   }, [initialFilter, isOpen]);
 
@@ -143,24 +143,50 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
 
           {/* Section 3: Distance Range */}
           <div>
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-xs text-slate-500 font-medium">
-                Bán kính tìm kiếm
-              </span>
-              <span className="text-xs font-semibold text-purple-600">
+            <div className="flex justify-between items-center mb-1">
+              <h3 className="text-sm font-bold text-slate-800">
+                Khoảng cách (km)
+              </h3>
+              <span className="text-sm font-bold text-purple-600">
                 {maxDistance >= 50
-                  ? `${minDistance} km - 50+ km`
-                  : `${minDistance} km - ${maxDistance} km`}
+                  ? `50+ km`
+                  : `${maxDistance} km`}
               </span>
             </div>
+            <p className="text-xs text-slate-400 mb-4">Bán kính tìm kiếm</p>
             <input
               type="range"
               min="0"
               max="50"
               value={maxDistance}
               onChange={(e) => setMaxDistance(Number(e.target.value))}
-              className="w-full accent-purple-600 cursor-pointer"
+              style={{
+                background: `linear-gradient(to right, #7c3aed ${(maxDistance / 50) * 100}%, #e5e7eb ${(maxDistance / 50) * 100}%)`,
+              }}
+              className="w-full h-1.5 rounded-full appearance-none cursor-pointer
+                [&::-webkit-slider-thumb]:appearance-none
+                [&::-webkit-slider-thumb]:w-6
+                [&::-webkit-slider-thumb]:h-6
+                [&::-webkit-slider-thumb]:rounded-full
+                [&::-webkit-slider-thumb]:bg-white
+                [&::-webkit-slider-thumb]:border-[3px]
+                [&::-webkit-slider-thumb]:border-purple-600
+                [&::-webkit-slider-thumb]:shadow-md
+                [&::-webkit-slider-thumb]:cursor-pointer
+                [&::-moz-range-thumb]:w-6
+                [&::-moz-range-thumb]:h-6
+                [&::-moz-range-thumb]:rounded-full
+                [&::-moz-range-thumb]:bg-white
+                [&::-moz-range-thumb]:border-[3px]
+                [&::-moz-range-thumb]:border-purple-600
+                [&::-moz-range-thumb]:shadow-md
+                [&::-moz-range-thumb]:cursor-pointer"
             />
+            <div className="flex justify-between mt-1.5">
+              <span className="text-xs text-slate-400">0 km</span>
+              <span className="text-xs text-slate-400">25 km</span>
+              <span className="text-xs text-slate-400">50+ km</span>
+            </div>
           </div>
 
           {/* Section 4: Price Level */}
