@@ -15,4 +15,5 @@ export interface Location {
   slug?: string;
   image?: string;
   previousDistricts?: string[];
+  priority?: number;
 }

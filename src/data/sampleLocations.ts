@@ -10,18 +10,18 @@ export const hcmcCommunesList: Location[] = [
   { id: 'thuduc', name: 'Phường Thủ Đức', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Thành phố Thủ Đức'] },
   { id: 'linhxuan', name: 'Phường Linh Xuân', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Thành phố Thủ Đức'] },
   { id: 'longbinh', name: 'Phường Long Bình', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Thành phố Thủ Đức'] },
-  { id: 'ankhanh', name: 'Phường An Khánh', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Thành phố Thủ Đức (Quận 2 cũ)'] },
+  { id: 'ankhanh', name: 'Phường An Khánh', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Thành phố Thủ Đức (Quận 2 cũ)'], priority: 5 },
 
   // Quận 1
-  { id: 'tandinh', name: 'Phường Tân Định', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 1'] },
-  { id: 'benthanh', name: 'Phường Bến Thành', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 1'] },
-  { id: 'saigon', name: 'Phường Sài Gòn', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 1'] },
-  { id: 'cauonglanh', name: 'Phường Cầu Ông Lãnh', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 1'] },
+  { id: 'tandinh', name: 'Phường Tân Định', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 1'], priority: 1 },
+  { id: 'benthanh', name: 'Phường Bến Thành', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 1'], priority: 2 },
+  { id: 'saigon', name: 'Phường Sài Gòn', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 1'], priority: 3 },
+  { id: 'cauonglanh', name: 'Phường Cầu Ông Lãnh', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 1'], priority: 12 },
 
   // Quận 3
-  { id: 'banco', name: 'Phường Bàn Cờ', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 3'] },
-  { id: 'xuanhoa', name: 'Phường Xuân Hòa', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 3'] },
-  { id: 'nhieuloc', name: 'Phường Nhiêu Lộc', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 3'] },
+  { id: 'banco', name: 'Phường Bàn Cờ', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 3'], priority: 11 },
+  { id: 'xuanhoa', name: 'Phường Xuân Hòa', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 3'], priority: 4 },
+  { id: 'nhieuloc', name: 'Phường Nhiêu Lộc', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 3'], priority: 18 },
 
   // Quận 4
   { id: 'vinhhoi', name: 'Phường Vĩnh Hội', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 4'] },
@@ -33,15 +33,32 @@ export const hcmcCommunesList: Location[] = [
 
   // Quận 7
   { id: 'tanmy', name: 'Phường Tân Mỹ', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 7'] },
-  { id: 'tanhung', name: 'Phường Tân Hưng', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 7'] },
+  { id: 'tanhung', name: 'Phường Tân Hưng', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 7'], priority: 22 },
+
+  // Quận 10
+  { id: 'vuonlai', name: 'Phường Vườn Lài', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 10'], priority: 15 },
+  { id: 'hoahung', name: 'Phường Hoà Hưng', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 10'], priority: 16 },
+
+  // Quận 12
+  { id: 'tanthoihiep', name: 'Phường Tân Thới Hiệp', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 12'], priority: 7 },
+  { id: 'anphudong', name: 'Phường An Phú Đông', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 12'], priority: 23 },
 
   // Quận Bình Thạnh
-  { id: 'giadinh', name: 'Phường Gia Định', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Bình Thạnh'] },
+  { id: 'giadinh', name: 'Phường Gia Định', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Bình Thạnh'], priority: 6 },
   { id: 'binhthanh', name: 'Phường Bình Thạnh', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Bình Thạnh'] },
+  { id: 'thanhmytay', name: 'Phường Thạnh Mỹ Tây', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Bình Thạnh'], priority: 21 },
+
+  // Quận Tân Bình
+  { id: 'tansonhoa', name: 'Phường Tân Sơn Hoà', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Tân Bình'], priority: 10 },
+  { id: 'tanhoa', name: 'Phường Tân Hoà', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Tân Bình'], priority: 19 },
 
   // Quận Gò Vấp
-  { id: 'hanhthong', name: 'Phường Hạnh Thông', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Gò Vấp'] },
-  { id: 'annhon', name: 'Phường An Nhơn', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Gò Vấp'] },
+  { id: 'hanhthong', name: 'Phường Hạnh Thông', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Gò Vấp'], priority: 20 },
+  { id: 'annhon', name: 'Phường An Nhơn', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Gò Vấp'], priority: 9 },
+  { id: 'govap', name: 'Phường Gò Vấp', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Gò Vấp'], priority: 8 },
+  { id: 'anhoidong', name: 'Phường An Hội Đông', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Gò Vấp'], priority: 13 },
+  { id: 'anhoitay', name: 'Phường An Hội Tây', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Gò Vấp'], priority: 14 },
+  { id: 'thongtayhoi', name: 'Phường Thông Tây Hội', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Gò Vấp'], priority: 17 },
 
   // Huyện Bình Chánh
   { id: 'vinhloc', name: 'Xã Vĩnh Lộc', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Huyện Bình Chánh'] },

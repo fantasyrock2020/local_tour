@@ -1,6 +1,7 @@
 import React from 'react';
 import { Location } from '../../types/location';
 import { X } from 'lucide-react';
+import { sortCommuneLocation } from '../../utils/helpers';
 
 interface CommuneModalProps {
   isOpen: boolean;
@@ -40,7 +41,7 @@ export const CommuneModal: React.FC<CommuneModalProps> = ({
 
         {/* List of communes */}
         <div className="overflow-y-auto divide-y divide-slate-100 py-1">
-          {communes.map((commune) => (
+          {sortCommuneLocation(communes).map((commune) => (
             <button
               key={commune.id}
               onClick={() => {
