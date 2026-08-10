@@ -12,6 +12,7 @@ interface PlaceItemCardProps {
 export const PlaceItemCard: React.FC<PlaceItemCardProps> = ({ place }) => {
   const status = getOpeningStatusAt(place.openingHours);
   const imageUrl = place.imageUrls[0] || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop';
+  const hasDescription = place.description && place.description.trim().length > 0;
 
   const handleCardClick = () => {
     if (place.address) {
@@ -60,6 +61,13 @@ export const PlaceItemCard: React.FC<PlaceItemCardProps> = ({ place }) => {
         <h3 className="font-semibold text-slate-900 text-base leading-snug line-clamp-2">
           {place.name}
         </h3>
+
+        {/* Note */}
+        {hasDescription && (
+          <div className="flex items-center gap-1 text-slate-500 text-xs line-clamp-1">
+            <span>{place.description}</span>
+          </div>
+        )}
 
         {/* Address */}
         <div className="flex items-center gap-1 text-slate-500 text-xs line-clamp-1">

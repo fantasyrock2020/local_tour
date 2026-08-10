@@ -196,5 +196,6 @@ export function mapJsonToPlace(
     isBestChoice,
     rating: 0,
     reviewCount: 0,
+    description: json.note?.toString(),
   };
 }
