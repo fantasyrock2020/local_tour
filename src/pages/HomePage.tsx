@@ -8,7 +8,7 @@ import { Header } from '../components/Common/Header';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const { locations } = useApp();
+  const { locations, resetFilter } = useApp();
   const [selectedLocationForCommunes, setSelectedLocationForCommunes] = useState<Location | null>(null);
 
   // Home grid locations list starts with null (Current Location) followed by sampleLocations
@@ -23,6 +23,7 @@ export const HomePage: React.FC = () => {
   };
 
   const navigateToListPlace = (location?: Location | null) => {
+    resetFilter();
     const params = new URLSearchParams();
     if (location?.id) params.set('locationId', location.id);
     if (location?.type) params.set('locationType', location.type);
@@ -32,7 +33,7 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-50 flex flex-col pb-20">
       {/* AppBar */}
       <Header title="Chọn địa điểm" showBack={false} />
 

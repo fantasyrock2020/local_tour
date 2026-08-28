@@ -9,6 +9,7 @@ interface FilterDrawerProps {
   onClose: () => void;
   onApply: (filter: PlaceFilter) => void;
   onClear: () => void;
+  showCategoryFilter?: boolean;
 }
 
 export const FilterDrawer: React.FC<FilterDrawerProps> = ({
@@ -17,6 +18,7 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
   onClose,
   onApply,
   onClear,
+  showCategoryFilter = false,
 }) => {
   const [selectedCategories, setSelectedCategories] = useState<PlaceCategoryEnum[]>([]);
   const [selectedStatuses, setSelectedStatuses] = useState<PlaceStatusFilterEnum[]>([]);
@@ -90,30 +92,32 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
         {/* Scrollable Filter Form */}
         <div className="flex-1 overflow-y-auto p-4 space-y-6">
           {/* Section 1: Categories */}
-          <div>
-            <h3 className="text-sm font-semibold text-slate-700 mb-2">
-              Danh mục địa điểm
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {Object.values(PlaceCategoryEnum).map((cat) => {
-                const isSelected = selectedCategories.includes(cat);
-                return (
-                  <button
-                    key={cat}
-                    type="button"
-                    onClick={() => toggleCategory(cat)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
-                      isSelected
-                        ? 'bg-purple-600 text-white border-purple-600 shadow-xs'
-                        : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'
-                    }`}
-                  >
-                    {PLACE_CATEGORIES[cat]?.label}
-                  </button>
-                );
-              })}
+          {showCategoryFilter && (
+            <div>
+              <h3 className="text-sm font-semibold text-slate-700 mb-2">
+                Danh mục địa điểm
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {Object.values(PlaceCategoryEnum).map((cat) => {
+                  const isSelected = selectedCategories.includes(cat);
+                  return (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => toggleCategory(cat)}
+                      className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+                        isSelected
+                          ? 'bg-purple-600 text-white border-purple-600 shadow-xs'
+                          : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'
+                      }`}
+                    >
+                      {PLACE_CATEGORIES[cat]?.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Section 2: Operating Status */}
           <div>

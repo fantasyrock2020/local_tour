@@ -19,7 +19,7 @@ export const PlacePage: React.FC = () => {
   const isFilterActive = !isFilterEmpty(activeFilter);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-50 flex flex-col pb-6">
       {/* Header */}
       <Header
         title={name}
@@ -48,6 +48,7 @@ export const PlacePage: React.FC = () => {
         onClose={() => setIsFilterOpen(false)}
         onApply={(newFilter) => setActiveFilter(newFilter)}
         onClear={resetFilter}
+        showCategoryFilter={true}
       />
     </div>
   );

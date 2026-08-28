@@ -34,14 +34,16 @@ export const PlaceItemCard: React.FC<PlaceItemCardProps> = ({ place }) => {
         />
 
         {/* Top-right distance badge */}
-        <div className="absolute top-2 right-2">
-          <TagBadge>
-            <div className="flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-slate-700" />
-              <span>{formatDistance(place.distance || 0)}</span>
-            </div>
-          </TagBadge>
-        </div>
+        {place.distance !== undefined && place.distance !== null && place.distance > 0 && (
+          <div className="absolute top-2 right-2">
+            <TagBadge>
+              <div className="flex items-center gap-1">
+                <MapPin className="w-3.5 h-3.5 text-slate-700" />
+                <span>{formatDistance(place.distance)}</span>
+              </div>
+            </TagBadge>
+          </div>
+        )}
 
         {/* Bottom-right status badge */}
         <div className="absolute bottom-2 right-2">

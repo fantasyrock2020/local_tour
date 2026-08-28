@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import React, { createContext, useState, useEffect, useMemo } from 'react';
 import { Location } from '../types/location';
 import { Place, PlaceOpenStatusEnum } from '../types/place';
 import { PlaceFilter, createEmptyFilter, PlaceStatusFilterEnum } from '../types/filter';
 import { sampleLocations } from '../data/sampleLocations';
 import { fetchPlacesApi } from '../data/placeApi';
-import { PLACE_CATEGORIES, PlaceCategoryEnum } from '../types/category';
+import { PLACE_CATEGORIES } from '../types/category';
 import {
   Coordinates,
   calculateDistanceKm,
@@ -74,15 +74,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, []);
 
+  const DEFAULT_COORDINATES: Coordinates = { lat: 10.7769, lng: 106.7009 };
+
   const getDistanceToPlace = (place: Place): number | null => {
     if (place.distance !== undefined && place.distance > 0) {
       return place.distance;
     }
-    if (!userCoordinates) {
-      // No user location yet (permission denied/not granted, or still resolving)
-      return null;
-    }
-    return calculateDistanceKm(userCoordinates, { lat: place.lat, lng: place.lng });
+    const origin = userCoordinates || DEFAULT_COORDINATES;
+    if (!place.lat || !place.lng) return null;
+    return calculateDistanceKm(origin, { lat: place.lat, lng: place.lng });
   };
 
   const resetFilter = () => {
