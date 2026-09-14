@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 interface HeaderProps {
   title: string;
   showBack?: boolean;
+  onBackClick?: () => void;
   onFilterClick?: () => void;
   isFilterActive?: boolean;
 }
@@ -12,17 +13,26 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   title,
   showBack = true,
+  onBackClick,
   onFilterClick,
   isFilterActive = false,
 }) => {
   const navigate = useNavigate();
+
+  const handleBack = () => {
+    if (onBackClick) {
+      onBackClick();
+    } else {
+      navigate(-1);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-30 flex items-center justify-between bg-white/90 backdrop-blur-md px-4 py-3 border-b border-slate-100 shadow-sm">
       <div className="flex items-center gap-3">
         {showBack && (
           <button
-            onClick={() => navigate(-1)}
+            onClick={handleBack}
             className="p-1.5 rounded-full hover:bg-slate-100 text-slate-700 transition-colors"
             aria-label="Back"
           >

@@ -169,6 +169,7 @@ export const CategoryPage: React.FC = () => {
             : 'Chọn danh mục'
         }
         showBack={!!selectedCategory}
+        onBackClick={() => handleSelectCategory(null)}
         onFilterClick={selectedCategory ? () => setIsFilterOpen(true) : undefined}
         isFilterActive={selectedCategory ? isFilterActive : false}
       />
