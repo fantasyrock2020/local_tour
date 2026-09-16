@@ -32,7 +32,7 @@ export const hcmcCommunesList: Location[] = [
   { id: 'andong', name: 'Phường An Đông', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 5'] },
 
   // Quận 7
-  { id: 'tanmy', name: 'Phường Tân Mỹ', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 7'] },
+  { id: 'tanmy', name: 'Phường Tân Mỹ', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 7'], priority: 22 },
   { id: 'tanhung', name: 'Phường Tân Hưng', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 7'], priority: 22 },
 
   // Quận 10
@@ -63,6 +63,9 @@ export const hcmcCommunesList: Location[] = [
   // Huyện Bình Chánh
   { id: 'vinhloc', name: 'Xã Vĩnh Lộc', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Huyện Bình Chánh'] },
   { id: 'binhchanh', name: 'Xã Bình Chánh', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Huyện Bình Chánh'] },
+
+  // Quận Tân Phú
+  { id: 'tansonnhi', name: 'Phường Tân Sơn Nhì', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận Tân Phú'], priority: 23 },
 ];
 
 export const sampleLocations: Location[] = [
