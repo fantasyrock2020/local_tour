@@ -31,6 +31,9 @@ export const hcmcCommunesList: Location[] = [
   { id: 'choquan', name: 'Phường Chợ Quán', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 5'] },
   { id: 'andong', name: 'Phường An Đông', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 5'] },
 
+  // Quận 6
+  { id: 'phulam', name: 'Phường Phú Lâm', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 6'],priority: 23 },
+
   // Quận 7
   { id: 'tanmy', name: 'Phường Tân Mỹ', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 7'], priority: 22 },
   { id: 'tanhung', name: 'Phường Tân Hưng', type: LocationType.COMMUNE, parentId: 'hcm', previousDistricts: ['Quận 7'], priority: 22 },
