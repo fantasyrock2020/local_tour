@@ -6,6 +6,7 @@ import { PlaceItemCard } from '../components/Place/PlaceItemCard';
 import { FilterDrawer } from '../components/Place/FilterDrawer';
 import { EmptyPlaceState } from '../components/Place/EmptyPlaceState';
 import { isFilterEmpty } from '../types/filter';
+import { Sparkles } from 'lucide-react';
 
 export const PlacePage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -30,6 +31,36 @@ export const PlacePage: React.FC = () => {
 
       {/* Main List */}
       <main className="flex-1 p-4 max-w-lg mx-auto w-full">
+        {/* Quick filter & counter header */}
+        <div className="flex items-center justify-between mb-3 px-0.5">
+          <div className="text-xs text-slate-500">
+            Hiển thị <strong className="text-slate-800">{places.length}</strong> địa điểm
+          </div>
+          <button
+            type="button"
+            onClick={() =>
+              setActiveFilter({
+                ...activeFilter,
+                onlyBestChoice: !activeFilter.onlyBestChoice,
+              })
+            }
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all border ${
+              activeFilter.onlyBestChoice
+                ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white border-transparent shadow-xs'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-amber-400 hover:text-amber-700'
+            }`}
+          >
+            <Sparkles
+              className={`w-3.5 h-3.5 ${
+                activeFilter.onlyBestChoice
+                  ? 'fill-white text-white'
+                  : 'text-amber-500 fill-amber-500'
+              }`}
+            />
+            <span>Nên đi nhất</span>
+          </button>
+        </div>
+
         {places.length === 0 ? (
           <EmptyPlaceState />
         ) : (

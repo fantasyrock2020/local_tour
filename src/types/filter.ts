@@ -21,6 +21,7 @@ export interface PlaceFilter {
   maxPriceLevel?: number;
   minRating?: number;
   tags: string[];
+  onlyBestChoice?: boolean;
 }
 
 export const createEmptyFilter = (): PlaceFilter => ({
@@ -28,6 +29,7 @@ export const createEmptyFilter = (): PlaceFilter => ({
   categoryIds: [],
   statuses: [],
   tags: [],
+  onlyBestChoice: false,
 });
 
 export const isFilterEmpty = (filter: PlaceFilter): boolean => {
@@ -39,6 +41,7 @@ export const isFilterEmpty = (filter: PlaceFilter): boolean => {
     filter.maxDistanceKm === undefined &&
     filter.maxPriceLevel === undefined &&
     filter.minRating === undefined &&
-    filter.tags.length === 0
+    filter.tags.length === 0 &&
+    !filter.onlyBestChoice
   );
 };

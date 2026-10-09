@@ -197,6 +197,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           return false;
         }
 
+        // 5. Best Choice
+        if (activeFilter.onlyBestChoice && !place.isBestChoice) {
+          return false;
+        }
+
         return true;
       });
     }

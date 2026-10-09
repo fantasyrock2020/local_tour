@@ -10,7 +10,7 @@ import { CATEGORY_CONFIG } from '../utils/categoryConfig';
 import { Place, PlaceOpenStatusEnum } from '../types/place';
 import { isFilterEmpty, PlaceStatusFilterEnum } from '../types/filter';
 import { getOpeningStatusAt } from '../utils/openingHours';
-import { ChevronRight, Layers, Search } from 'lucide-react';
+import { ChevronRight, Layers, Search, Sparkles } from 'lucide-react';
 
 export const CategoryPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -138,6 +138,11 @@ export const CategoryPage: React.FC = () => {
           return false;
         }
 
+        // Best Choice filter
+        if (activeFilter.onlyBestChoice && !place.isBestChoice) {
+          return false;
+        }
+
         return true;
       });
     }
@@ -259,9 +264,34 @@ export const CategoryPage: React.FC = () => {
               <span>
                 Hiển thị <strong className="text-slate-800">{filteredPlaces.length}</strong> địa điểm
               </span>
-              <span className="font-medium text-purple-600">
-                {CATEGORY_CONFIG[selectedCategory]?.label}
-              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveFilter({
+                      ...activeFilter,
+                      onlyBestChoice: !activeFilter.onlyBestChoice,
+                    })
+                  }
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold transition-all border ${
+                    activeFilter.onlyBestChoice
+                      ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white border-transparent shadow-xs'
+                      : 'bg-white text-slate-700 border-slate-200 hover:border-amber-400 hover:text-amber-700'
+                  }`}
+                >
+                  <Sparkles
+                    className={`w-3 h-3 ${
+                      activeFilter.onlyBestChoice
+                        ? 'fill-white text-white'
+                        : 'text-amber-500 fill-amber-500'
+                    }`}
+                  />
+                  <span>Nên đi nhất</span>
+                </button>
+                <span className="font-medium text-purple-600">
+                  {CATEGORY_CONFIG[selectedCategory]?.label}
+                </span>
+              </div>
             </div>
 
             {/* Places List */}

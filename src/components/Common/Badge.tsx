@@ -1,4 +1,5 @@
 import React from 'react';
+import { Sparkles } from 'lucide-react';
 import { PlaceOpenStatusEnum } from '../../types/place';
 
 interface PlaceStatusBadgeProps {
@@ -53,6 +54,17 @@ export const PlaceStatusBadge: React.FC<PlaceStatusBadgeProps> = ({ status }) =>
     >
       <span className={`w-1.5 h-1.5 rounded-full ${style.dot}`} />
       <span>{style.label}</span>
+    </div>
+  );
+};
+
+export const BestChoiceBadge: React.FC<{ className?: string }> = ({ className = '' }) => {
+  return (
+    <div
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 shadow-[0_2px_8px_rgba(245,158,11,0.45)] ring-1 ring-white/60 backdrop-blur-xs ${className}`}
+    >
+      <Sparkles className="w-3.5 h-3.5 fill-yellow-200 text-yellow-100" />
+      <span>Đề xuất nên đi</span>
     </div>
   );
 };
