@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Sparkles } from 'lucide-react';
+import { X } from 'lucide-react';
 import { PlaceFilter, PlaceStatusFilterEnum, PLACE_STATUS_LABELS } from '../../types/filter';
 import { PLACE_CATEGORIES, PlaceCategoryEnum } from '../../types/category';
 
@@ -25,7 +25,6 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
   const [minDistance, setMinDistance] = useState<number>(0);
   const [maxDistance, setMaxDistance] = useState<number>(10);
   const [maxPriceLevel, setMaxPriceLevel] = useState<number | undefined>(undefined);
-  const [onlyBestChoice, setOnlyBestChoice] = useState<boolean>(false);
 
   useEffect(() => {
     setSelectedCategories(initialFilter.categories || []);
@@ -33,7 +32,6 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
     setMinDistance(initialFilter.minDistanceKm || 0);
     setMaxDistance(initialFilter.maxDistanceKm || 10);
     setMaxPriceLevel(initialFilter.maxPriceLevel);
-    setOnlyBestChoice(Boolean(initialFilter.onlyBestChoice));
   }, [initialFilter, isOpen]);
 
   if (!isOpen) return null;
@@ -59,7 +57,7 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
       maxDistanceKm: maxDistance < 50 ? maxDistance : undefined,
       maxPriceLevel: maxPriceLevel,
       tags: [],
-      onlyBestChoice: onlyBestChoice,
+      onlyBestChoice: initialFilter.onlyBestChoice,
     });
     onClose();
   };
@@ -70,7 +68,6 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
     setMinDistance(0);
     setMaxDistance(50);
     setMaxPriceLevel(undefined);
-    setOnlyBestChoice(false);
     onClear();
     onClose();
   };
@@ -95,45 +92,6 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
 
         {/* Scrollable Filter Form */}
         <div className="flex-1 overflow-y-auto p-4 space-y-6">
-          {/* Best Choice Filter Option */}
-          <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/90 rounded-2xl p-3.5 shadow-xs">
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white shadow-xs shrink-0">
-                  <Sparkles className="w-5 h-5 fill-white" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <h3 className="text-sm font-bold text-slate-800">
-                      Địa điểm nên đi nhất
-                    </h3>
-                    <span className="text-[10px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded-full bg-amber-200 text-amber-900">
-                      Best Choice
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-500 mt-0.5">
-                    Chỉ lọc các điểm đến nổi bật được đề xuất
-                  </p>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                role="switch"
-                aria-checked={onlyBestChoice}
-                onClick={() => setOnlyBestChoice((prev) => !prev)}
-                className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                  onlyBestChoice ? 'bg-amber-500' : 'bg-slate-300'
-                }`}
-              >
-                <span
-                  className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
-                    onlyBestChoice ? 'translate-x-5' : 'translate-x-0'
-                  }`}
-                />
-              </button>
-            </div>
-          </div>
           {/* Section 1: Categories */}
           {showCategoryFilter && (
             <div>

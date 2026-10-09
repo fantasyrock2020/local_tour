@@ -44,20 +44,20 @@ export const PlacePage: React.FC = () => {
                 onlyBestChoice: !activeFilter.onlyBestChoice,
               })
             }
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all border ${
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs transition-colors border ${
               activeFilter.onlyBestChoice
-                ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white border-transparent shadow-xs'
-                : 'bg-white text-slate-700 border-slate-200 hover:border-amber-400 hover:text-amber-700'
+                ? 'bg-amber-50 text-amber-800 border-amber-300 font-semibold shadow-xs'
+                : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 font-normal'
             }`}
           >
             <Sparkles
               className={`w-3.5 h-3.5 ${
                 activeFilter.onlyBestChoice
-                  ? 'fill-white text-white'
-                  : 'text-amber-500 fill-amber-500'
+                  ? 'text-amber-600 fill-amber-500'
+                  : 'text-slate-400'
               }`}
             />
-            <span>Nên đi nhất</span>
+            <span>Nên đi</span>
           </button>
         </div>
 

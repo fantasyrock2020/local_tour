@@ -1,7 +1,7 @@
 import React from 'react';
 import { Place } from '../../types/place';
 import { PlaceStatusBadge, TagBadge, BestChoiceBadge } from '../Common/Badge';
-import { MapPin, Sparkles } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { formatDistance } from '../../utils/distance';
 import { getOpeningStatusAt } from '../../utils/openingHours';
 
@@ -23,17 +23,12 @@ export const PlaceItemCard: React.FC<PlaceItemCardProps> = ({ place }) => {
   return (
     <div
       onClick={handleCardClick}
-      className={`mb-4 bg-white rounded-xl overflow-hidden cursor-pointer group transition-all duration-300 relative ${
+      className={`mb-4 bg-white rounded-xl overflow-hidden cursor-pointer group transition-shadow ${
         place.isBestChoice
-          ? 'border-2 border-amber-400 shadow-[0_8px_24px_rgba(245,158,11,0.18)] ring-2 ring-amber-400/25 hover:shadow-[0_12px_28px_rgba(245,158,11,0.26)]'
+          ? 'border border-amber-200/90 shadow-[0_4px_16px_rgba(217,119,6,0.06)] hover:shadow-md'
           : 'border border-slate-100 shadow-[0_8px_24px_rgba(13,94,107,0.06)] hover:shadow-md'
       }`}
     >
-      {/* Top accent line for Best Choice */}
-      {place.isBestChoice && (
-        <div className="h-1 bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 w-full" />
-      )}
-
       {/* Image header with overlay badges */}
       <div className="relative h-48 w-full overflow-hidden bg-slate-100">
         <img
@@ -44,7 +39,7 @@ export const PlaceItemCard: React.FC<PlaceItemCardProps> = ({ place }) => {
 
         {/* Top-left Best Choice badge */}
         {place.isBestChoice && (
-          <div className="absolute top-2 left-2 z-10">
+          <div className="absolute top-2 left-2">
             <BestChoiceBadge />
           </div>
         )}
@@ -76,30 +71,9 @@ export const PlaceItemCard: React.FC<PlaceItemCardProps> = ({ place }) => {
 
       {/* Place Content */}
       <div className="p-3 space-y-2.5">
-        {/* Recommendation banner for Best Choice */}
-        {place.isBestChoice && (
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200/80 text-amber-800 text-[11px] font-semibold w-fit">
-            <Sparkles className="w-3.5 h-3.5 text-amber-600 fill-amber-500 shrink-0" />
-            <span>Địa điểm nổi bật • Rất đáng trải nghiệm</span>
-          </div>
-        )}
-
-        <div className="flex items-start justify-between gap-2">
-          <h3
-            className={`text-base leading-snug line-clamp-2 ${
-              place.isBestChoice
-                ? 'font-bold text-amber-950'
-                : 'font-semibold text-slate-900'
-            }`}
-          >
-            {place.name}
-          </h3>
-          {place.isBestChoice && (
-            <span className="shrink-0 text-amber-800 bg-amber-100 border border-amber-200 text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded tracking-wide">
-              Top Pick
-            </span>
-          )}
-        </div>
+        <h3 className="font-semibold text-slate-900 text-base leading-snug line-clamp-2">
+          {place.name}
+        </h3>
 
         {/* Note */}
         {hasDescription && (

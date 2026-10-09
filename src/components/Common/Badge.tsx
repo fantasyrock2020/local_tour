@@ -61,10 +61,10 @@ export const PlaceStatusBadge: React.FC<PlaceStatusBadgeProps> = ({ status }) =>
 export const BestChoiceBadge: React.FC<{ className?: string }> = ({ className = '' }) => {
   return (
     <div
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 shadow-[0_2px_8px_rgba(245,158,11,0.45)] ring-1 ring-white/60 backdrop-blur-xs ${className}`}
+      className={`inline-flex items-center gap-1 px-2 py-1 bg-amber-50/95 text-amber-800 text-xs font-semibold rounded-md shadow-xs border border-amber-200/80 backdrop-blur-xs ${className}`}
     >
-      <Sparkles className="w-3.5 h-3.5 fill-yellow-200 text-yellow-100" />
-      <span>Đề xuất nên đi</span>
+      <Sparkles className="w-3.5 h-3.5 text-amber-600 fill-amber-500" />
+      <span>Nên đi</span>
     </div>
   );
 };
